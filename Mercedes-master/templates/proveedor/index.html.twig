@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proveedor{% endblock %}
+
+{% block body %}
+    <h1>Proveedor</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Cuit</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proveedor in proveedors %}
+            <tr>
+                <td><a href="{{ path('proveedor_show', {'id': proveedor.id}) }}">{{ proveedor.Nombre }}</a></td>
+                <td>{{ proveedor.Fecha ? proveedor.Fecha|date('d-m-Y') : '' }}</td>
+                <td>{{ proveedor.Cuit }}</td>
+                <td>
+                    <a href="{{ path('proveedor_edit', {'id': proveedor.id}) }}">Actualizar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">N/A</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('proveedor_new') }}">Nuevo proveedor</a>
+{% endblock %}

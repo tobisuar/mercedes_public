@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pedido{% endblock %}
+
+{% block body %}
+    <h1>Pedido</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pedido.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ pedido.Nombre }}</td>
+            </tr>
+            <tr>
+                <th>Proveedor</th>
+                <td>
+                {% if pedido.proveedor %}
+                    <a href="{{ path('proveedor_show', {'id': pedido.proveedor.id}) }}">{{ pedido.proveedor }}</a>
+                {% else %}
+                    -
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Detalle</th>
+                <td>{{ pedido.Detalle }}</td>
+            </tr>
+            <tr>
+                <th>Deuda</th>
+                <td>{{ pedido.Deuda }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ pedido.Estado }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ pedido.Fecha ? pedido.Fecha|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Pedido</th>
+            <td>
+            {% if pedido.PCompraPath %}
+                <a href="{{ asset('uploads/PedidosDeCompra/' ~ pedido.PCompraPath) }}">Pedido</a>
+            {% else %}
+                -
+            {% endif %}
+            </td>
+            </tr>
+            <tr>
+                <th>Vale</th>
+            <td>
+            {% if pedido.ValePath %}
+                <a href="{{ asset('uploads/Vales/' ~ pedido.ValePath) }}">Vale</a>
+            {% else %}
+                -
+            {% endif %}
+            </td>
+            </tr>
+            <tr>
+                <th>Factura</th>
+            <td>
+            {% if pedido.FacturaPath %}
+                <a href="{{ asset('uploads/Facturas/' ~ pedido.FacturaPath) }}">Factura</a>
+            {% else %}
+                -
+            {% endif %}
+            </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal-footer">
+        <a class="btn btn-outline-primary" href="{{ path('pedido_index') }}">Volver a la lista</a>
+        <a class="btn btn-primary" href="{{ path('pedido_edit', {'id': pedido.id}) }}">Editar</a>
+        {{ include('pedido/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

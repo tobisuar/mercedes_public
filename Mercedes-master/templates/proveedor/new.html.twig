@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo proveedor{% endblock %}
+
+{% block body %}
+    <h1>Nuevo proveedor</h1>
+
+    <div class="modal-body">
+        {{ include('proveedor/_form.html.twig') }}
+    </div>
+
+    <div class="modal-footer">
+        <a class="btn btn-outline-primary" href="{{ path('proveedor_index') }}">Volver a la lista</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Pedido{% endblock %}
+
+{% block body %}
+    <h1>Editar Pedido</h1>
+    
+    <div class="modal-body">
+        {{ include('pedido/_form.html.twig', {'button_label': 'Actualizar'}) }}
+    </div>
+
+    <div class="modal-footer">
+        <a class="btn btn-outline-primary" href="{{ path('pedido_index') }}">Volver a la lista</a>
+        {{ include('pedido/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('input[type="file"]').on('change', function(e){
+            var fileName = e.target.files[0].name;
+            $(this).next('.custom-file-label').html(fileName);
+        });
+    </script>
+{% endblock %}

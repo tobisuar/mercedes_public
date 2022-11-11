@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pedido Nuevo{% endblock %}
+
+{% block body %}
+    <h1>Crear Pedido Nuevo</h1>
+
+    <div class="modal-body">
+        {{ include('pedido/_form.html.twig') }}
+    </div>
+
+    <div class="modal-footer">
+        <a class="btn btn-outline-primary" href="{{ path('pedido_index') }}">Volver a la lista</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('input[type="file"]').on('change', function(e){
+            var fileName = e.target.files[0].name;
+            $(this).next('.custom-file-label').html(fileName);
+        });
+    </script>
+{% endblock %}

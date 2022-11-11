@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pedido{% endblock %}
+
+{% block body %}
+    <h1>Pedido</h1>
+
+    {{ include('/pedido/list.html.twig', {pedidos: pedidos}) }}
+
+    <a href="{{ path('pedido_new') }}">Pedido Nuevo</a>
+{% endblock %}

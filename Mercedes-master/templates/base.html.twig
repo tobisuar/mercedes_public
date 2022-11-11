@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <script src="/bootstrap.min.js"></script>
+        <link href="/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        {{ include('/nav.html.twig') }}
+        {% block body %}{% endblock %}
+        <script src="/jquery.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
